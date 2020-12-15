@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <%- include('layout') -%>
+  <% if(user) { %>
+    <p> You are currently logged in as <%- user.username %> | ID: <%- user._id %> | Nickname: <%- user.nickname %> | Role: <%- user.userType %></p>
+    <br>
+    <table>
+      <tr>
+        <th>Username</th>
+        <th>ID</th>
+        <th>Birthdate</th>
+      </tr>
+      <% accounts.forEach((u) => {
+        %>
+        <tr>
+          <th><%- u.username %></th>
+          <th><%- u._id %></th>
+          <th><%- u.birthdate %></th>
+        </tr>
+        <%
+      }) %>
+    </table>
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>ID</th>
+        <th>Birthdate</th>
+        <th>Author ID</th>
+      </tr>
+      <% posts.forEach((p) => {
+        %>
+        <tr>
+          <th><%- p.title %></th>
+          <th><%- p._id %></th>
+          <th><%- p.birthdate %></th>
+          <th><%- p.author %></th>
+        </tr>
+        <%
+      }) %>
+    </table>
+  <% } else { %>
+    <p> are currently not logged in. Plaese login or register...</p>
+    <% } %>
+</body>
+</html>
